@@ -19,13 +19,11 @@ struct PeopleView: View {
                 background
                 
                 ScrollView {
-                    LazyVGrid(columns:columns, spacing: 5) {
-                        ForEach(0...5, id: \.self) { item in
-                          //  PeopleItemView(user: user)
-                          Text("Hello: \(item)")
+                    LazyVGrid(columns:columns, spacing: .zero) {
+                        ForEach(users, id: \.id) { user in
+                            PeopleItemView(user: user)
                         }
                     }
-                    .padding()
                 }
             }
             .navigationTitle("Request-User")
@@ -40,6 +38,14 @@ struct PeopleView: View {
                                 .bold()
                             )
                     }
+                }
+            }
+            .onAppear{
+                do {
+                    let res = try! StaticJSONMapper.decode(file: "UsersStaticData", type: UsersResponse.self)
+                    users = res.data
+                } catch {
+                    print(error)
                 }
             }
         }
