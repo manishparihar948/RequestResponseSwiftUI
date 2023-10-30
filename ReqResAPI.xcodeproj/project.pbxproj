@@ -21,6 +21,8 @@
 		CDC6666F2AEFC56600739BF6 /* StaticJSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6666E2AEFC56600739BF6 /* StaticJSONMapper.swift */; };
 		CDC666712AEFC6D300739BF6 /* UsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC666702AEFC6D300739BF6 /* UsersResponse.swift */; };
 		CDC666742AEFC71400739BF6 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC666732AEFC71400739BF6 /* Models.swift */; };
+		CDC6667A2AF04EE600739BF6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC666792AF04EE600739BF6 /* DetailView.swift */; };
+		CDC6667C2AF050A000739BF6 /* UserDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6667B2AF050A000739BF6 /* UserDetailResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		CDC6666E2AEFC56600739BF6 /* StaticJSONMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticJSONMapper.swift; sourceTree = "<group>"; };
 		CDC666702AEFC6D300739BF6 /* UsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersResponse.swift; sourceTree = "<group>"; };
 		CDC666732AEFC71400739BF6 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		CDC666792AF04EE600739BF6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		CDC6667B2AF050A000739BF6 /* UserDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 		CDC666612AEFA2DE00739BF6 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				CDC666752AF04DE200739BF6 /* Detail */,
 				CDC666622AEFA2EB00739BF6 /* People */,
 			);
 			path = Features;
@@ -183,6 +188,39 @@
 				CDC666732AEFC71400739BF6 /* Models.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CDC666752AF04DE200739BF6 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CDC666782AF04EA600739BF6 /* View Models */,
+				CDC666772AF04EA000739BF6 /* Model */,
+				CDC666762AF04E9400739BF6 /* Views */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		CDC666762AF04E9400739BF6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CDC666792AF04EE600739BF6 /* DetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CDC666772AF04EA000739BF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDC6667B2AF050A000739BF6 /* UserDetailResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CDC666782AF04EA600739BF6 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +299,9 @@
 				CDC6666C2AEFC3F900739BF6 /* RankingView.swift in Sources */,
 				CDC6665D2AEF97F700739BF6 /* Theme.swift in Sources */,
 				CDC666672AEFA35200739BF6 /* PeopleView.swift in Sources */,
+				CDC6667C2AF050A000739BF6 /* UserDetailResponse.swift in Sources */,
 				CDC666692AEFA4C200739BF6 /* PeopleItemView.swift in Sources */,
+				CDC6667A2AF04EE600739BF6 /* DetailView.swift in Sources */,
 				CDC666712AEFC6D300739BF6 /* UsersResponse.swift in Sources */,
 				CDC6665F2AEF986900739BF6 /* Symbols.swift in Sources */,
 				CDC6664B2AEF955400739BF6 /* ContentView.swift in Sources */,
