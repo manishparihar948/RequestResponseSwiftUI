@@ -11,25 +11,24 @@ struct PeopleItemView: View {
     let user: User
     
     var body: some View {
-        VStack(spacing:.zero){
+        VStack(alignment:.leading){
             HStack {
-                /*
-                Rectangle()
-                    .fill(.green)
-                    .frame(width:80,height: 80)
-                 */
-                
                 AsyncImage(url: .init(string: user.avatar)) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width:80,height: 80)
-                        .clipped()
-                        .presentationCornerRadius(10.0)
-                        .shadow(radius: 10)
+                        .clipShape(RoundedRectangle(cornerRadius: 16,
+                                                    style: .continuous))
+                        .shadow(color: Theme.text.opacity(0.1),
+                                radius: 2,
+                                x: 0,
+                                y: 1)
+                        .padding(.leading,5)
                 } placeholder: {
                     ProgressView()
                 }
+                .frame(alignment:.leading)
                 
                 VStack (alignment: .leading){
                     RankingView(id:user.id)
@@ -43,8 +42,12 @@ struct PeopleItemView: View {
                 }            
             }
         }
-        .frame(maxWidth: .infinity)
-        .frame(height: 150)
+        .frame(maxWidth: .infinity,alignment:.leading)
+        .frame(height: 100)
+        .background(Color.gray)
+        .clipShape(RoundedRectangle(cornerRadius: 16,
+                                    style: .continuous))
+        .padding()
     }
 }
 
