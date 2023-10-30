@@ -13,6 +13,8 @@
 		CDC666502AEF955800739BF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDC6664F2AEF955800739BF6 /* Preview Assets.xcassets */; };
 		CDC666592AEF961300739BF6 /* SingleUserData.json in Resources */ = {isa = PBXBuildFile; fileRef = CDC666582AEF961300739BF6 /* SingleUserData.json */; };
 		CDC6665B2AEF962F00739BF6 /* UsersStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CDC6665A2AEF962F00739BF6 /* UsersStaticData.json */; };
+		CDC6665D2AEF97F700739BF6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6665C2AEF97F700739BF6 /* Theme.swift */; };
+		CDC6665F2AEF986900739BF6 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6665E2AEF986900739BF6 /* Symbols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		CDC6664F2AEF955800739BF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CDC666582AEF961300739BF6 /* SingleUserData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SingleUserData.json; sourceTree = "<group>"; };
 		CDC6665A2AEF962F00739BF6 /* UsersStaticData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UsersStaticData.json; sourceTree = "<group>"; };
+		CDC6665C2AEF97F700739BF6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		CDC6665E2AEF986900739BF6 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				CDC666572AEF95E700739BF6 /* JSON */,
+				CDC6665C2AEF97F700739BF6 /* Theme.swift */,
+				CDC6665E2AEF986900739BF6 /* Symbols.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -161,6 +167,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDC6665D2AEF97F700739BF6 /* Theme.swift in Sources */,
+				CDC6665F2AEF986900739BF6 /* Symbols.swift in Sources */,
 				CDC6664B2AEF955400739BF6 /* ContentView.swift in Sources */,
 				CDC666492AEF955400739BF6 /* ReqResAPIApp.swift in Sources */,
 			);
