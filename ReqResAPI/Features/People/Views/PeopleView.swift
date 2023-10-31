@@ -26,26 +26,26 @@ struct PeopleView: View {
                                 DetailView(userId: user.id)
                             } label: {
                                 PeopleItemView(user: user)
+                                    .task {
+                                        if vm.hasReachedEnd(of: user) && !vm.isFetching {
+                                            await vm.fetchNextSetOfUsers()
+                                        }
+                                    }
                             }
                         }
+                    }
+                }
+                .overlay(alignment:.bottom) {
+                    // Scroll View on bottom
+                    if  vm.isFetching {
+                        ProgressView()
                     }
                 }
             }
             .navigationTitle("Request-User")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        Task {
-                            await vm.fetchUsers()
-                        }
-                    } label: {
-                        Symbols.refresh
-                            .font(
-                                .system(.headline, design: .rounded)
-                                .bold()
-                            )
-                    }
-                    .disabled(vm.isLoading)
+                   refresh
                 }
             }
             .task{
@@ -73,5 +73,20 @@ private extension PeopleView {
     var background: some View {
         Theme.background
             .ignoresSafeArea(edges: .all)
+    }
+    
+    var refresh: some View {
+        Button {
+            Task {
+                await vm.fetchUsers()
+            }
+        } label: {
+            Symbols.refresh
+                .font(
+                    .system(.headline, design: .rounded)
+                    .bold()
+                )
+        }
+        .disabled(vm.isLoading)
     }
 }
