@@ -37,8 +37,8 @@ struct DetailView: View {
                 }
             }
             .navigationTitle("User Details")
-            .onAppear {
-                vm.fetchDetails(for: userId)
+            .task {
+               await vm.fetchDetails(for: userId)
             }
         }
     }
