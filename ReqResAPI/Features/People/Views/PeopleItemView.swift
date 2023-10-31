@@ -34,12 +34,9 @@ struct PeopleItemView: View {
                     RankingView(id:user.id)
                     
                     Text("\(user.firstName) \(user.lastName)")
-                        .font(
-                            .system(.caption, design: .rounded)
-                            .bold()
-                        )
+                        .font(.system(size: 16, weight: .heavy, design: .rounded))
                         .foregroundStyle(Theme.text)
-                }            
+                }
             }
         }
         .frame(maxWidth: .infinity,alignment:.leading)
