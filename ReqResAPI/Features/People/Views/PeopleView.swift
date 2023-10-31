@@ -11,7 +11,7 @@ struct PeopleView: View {
     
     private let columns = Array(repeating: GridItem(.flexible()), count: 1)
     
-    @State private var users: [User] = []
+    @StateObject private var vm = PeopleViewModel()
     
     var body: some View {
         NavigationStack {
@@ -20,9 +20,9 @@ struct PeopleView: View {
                 
                 ScrollView {
                     LazyVGrid(columns:columns, spacing: .zero) {
-                        ForEach(users, id: \.id) { user in
+                        ForEach(vm.users, id: \.id) { user in
                             NavigationLink{
-                                DetailView()
+                                DetailView(userId: user.id)
                             } label: {
                                 PeopleItemView(user: user)
                             }
@@ -45,14 +45,7 @@ struct PeopleView: View {
                 }
             }
             .onAppear{
-                NetworkingManager.shared.request("https://reqres.in/api/users", type: UsersResponse.self) { res in
-                    switch res {
-                    case .success(let response):
-                        users = response.data
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
+                vm.fetchUsers()
             }
         }
     }
