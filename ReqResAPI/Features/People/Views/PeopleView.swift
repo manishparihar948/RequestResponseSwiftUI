@@ -12,6 +12,7 @@ struct PeopleView: View {
     private let columns = Array(repeating: GridItem(.flexible()), count: 1)
     
     @StateObject private var vm = PeopleViewModel()
+    @State private var hasAppeared = false
     
     var body: some View {
         NavigationStack {
@@ -34,7 +35,9 @@ struct PeopleView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        
+                        Task {
+                            await vm.fetchUsers()
+                        }
                     } label: {
                         Symbols.refresh
                             .font(
@@ -42,10 +45,21 @@ struct PeopleView: View {
                                 .bold()
                             )
                     }
+                    .disabled(vm.isLoading)
                 }
             }
-            .onAppear{
-                vm.fetchUsers()
+            .task{
+                if !hasAppeared {
+                    await vm.fetchUsers()
+                    hasAppeared = true
+                }
+            }
+            .alert(isPresented: $vm.hasError, error: vm.error) {
+                Button("Retry"){
+                    Task {
+                        await vm.fetchUsers()
+                    }
+                }
             }
         }
     }
