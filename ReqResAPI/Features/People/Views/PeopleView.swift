@@ -11,7 +11,8 @@ struct PeopleView: View {
     
     private let columns = Array(repeating: GridItem(.flexible()), count: 1)
     
-    @State private var users: [User] = []
+    @StateObject private var vm = PeopleViewModel()
+    @State private var hasAppeared = false
     
     var body: some View {
         NavigationStack {
@@ -20,9 +21,9 @@ struct PeopleView: View {
                 
                 ScrollView {
                     LazyVGrid(columns:columns, spacing: .zero) {
-                        ForEach(users, id: \.id) { user in
+                        ForEach(vm.users, id: \.id) { user in
                             NavigationLink{
-                                DetailView()
+                                DetailView(userId: user.id)
                             } label: {
                                 PeopleItemView(user: user)
                             }
@@ -34,7 +35,9 @@ struct PeopleView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        
+                        Task {
+                            await vm.fetchUsers()
+                        }
                     } label: {
                         Symbols.refresh
                             .font(
@@ -42,14 +45,20 @@ struct PeopleView: View {
                                 .bold()
                             )
                     }
+                    .disabled(vm.isLoading)
                 }
             }
-            .onAppear{
-                do {
-                    let res = try! StaticJSONMapper.decode(file: "UsersStaticData", type: UsersResponse.self)
-                    users = res.data
-                } catch {
-                    print(error)
+            .task{
+                if !hasAppeared {
+                    await vm.fetchUsers()
+                    hasAppeared = true
+                }
+            }
+            .alert(isPresented: $vm.hasError, error: vm.error) {
+                Button("Retry"){
+                    Task {
+                        await vm.fetchUsers()
+                    }
                 }
             }
         }

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct DetailView: View {
     
-    @State private var userInfo : UserDetailResponse?
+    let userId: Int
+    @StateObject private var vm = DetailViewModel()
+    
     
     var body: some View {
         NavigationStack {
@@ -22,7 +24,7 @@ struct DetailView: View {
                         Divider()
 
                         Group {
-                            RankingView(id: userInfo?.data.id ?? 0)
+                            RankingView(id: vm.userInfo?.data.id ?? 0)
                             general
                             Divider()
                             support
@@ -35,22 +37,32 @@ struct DetailView: View {
                 }
             }
             .navigationTitle("User Details")
-            .onAppear {
-                do {
-                     userInfo = try StaticJSONMapper.decode(file: "SingleUserData", type: UserDetailResponse.self)
-                    
-                } catch {
-                    print(error)
-                }
+            .task {
+               await vm.fetchDetails(for: userId)
             }
         }
     }
 }
 
 
+/*
 #Preview {
     NavigationStack{
-        DetailView()
+        DetailView(userId: <#Int#>)
+    }
+}
+*/
+
+struct DetailView_Previews: PreviewProvider {
+    private static var previewUserId: Int {
+        let users = try! StaticJSONMapper.decode(file: "UsersStaticData", type: UsersResponse.self)
+        return users.data.first!.id
+    }
+    
+    static var previews: some View {
+         NavigationStack {
+            DetailView(userId: previewUserId)
+         }
     }
 }
 
@@ -67,7 +79,7 @@ private extension DetailView {
     
     @ViewBuilder
     var avatar: some View {
-        if let avatarAbsoluteString = userInfo?.data.avatar,
+        if let avatarAbsoluteString = vm.userInfo?.data.avatar,
            let avatarUrl = URL(string: avatarAbsoluteString) {
             AsyncImage(url:avatarUrl) {image in
                 image
@@ -85,21 +97,21 @@ private extension DetailView {
     @ViewBuilder
     var general : some View {
         // Text
-        Text("First Name: \(userInfo?.data.firstName ?? "-")")
+        Text("First Name: \(vm.userInfo?.data.firstName ?? "-")")
             .font(
                 .system(.subheadline, design: .rounded)
                 .weight(.semibold)
             )
             .foregroundStyle(Theme.text)
 
-        Text("Last Name: \(userInfo?.data.lastName ?? "-")")
+        Text("Last Name: \(vm.userInfo?.data.lastName ?? "-")")
             .font(
                 .system(.subheadline, design: .rounded)
                 .weight(.semibold)
             )
             .foregroundStyle(Theme.text)
         
-        Text("Email: \(userInfo?.data.email ?? "-")")
+        Text("Email: \(vm.userInfo?.data.email ?? "-")")
             .font(
                 .system(.subheadline, design: .rounded)
                 .weight(.semibold)
@@ -111,14 +123,14 @@ private extension DetailView {
     @ViewBuilder
     var support: some View {
         // Text - Support
-        Text(userInfo?.support.text ?? "-")
+        Text(vm.userInfo?.support.text ?? "-")
             .font(
                 .system(.subheadline, design: .rounded)
                 .weight(.semibold)
             )
             .foregroundStyle(Theme.text)
         
-        Text("URL : \(userInfo?.support.url ?? "-")")
+        Text("URL : \(vm.userInfo?.support.url ?? "-")")
             .font(
                 .system(.subheadline, design: .rounded)
                 .weight(.thin)

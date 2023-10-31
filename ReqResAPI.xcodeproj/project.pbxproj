@@ -23,6 +23,10 @@
 		CDC666742AEFC71400739BF6 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC666732AEFC71400739BF6 /* Models.swift */; };
 		CDC6667A2AF04EE600739BF6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC666792AF04EE600739BF6 /* DetailView.swift */; };
 		CDC6667C2AF050A000739BF6 /* UserDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6667B2AF050A000739BF6 /* UserDetailResponse.swift */; };
+		CDC6667F2AF0DB2000739BF6 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6667E2AF0DB1F00739BF6 /* NetworkingManager.swift */; };
+		CDC666812AF0E99E00739BF6 /* PeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC666802AF0E99E00739BF6 /* PeopleViewModel.swift */; };
+		CDC666832AF0ECC200739BF6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC666822AF0ECC200739BF6 /* DetailViewModel.swift */; };
+		CDC666852AF1098B00739BF6 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC666842AF1098B00739BF6 /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,10 @@
 		CDC666732AEFC71400739BF6 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		CDC666792AF04EE600739BF6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CDC6667B2AF050A000739BF6 /* UserDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailResponse.swift; sourceTree = "<group>"; };
+		CDC6667E2AF0DB1F00739BF6 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		CDC666802AF0E99E00739BF6 /* PeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModel.swift; sourceTree = "<group>"; };
+		CDC666822AF0ECC200739BF6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		CDC666842AF1098B00739BF6 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +124,7 @@
 		CDC666602AEFA2D800739BF6 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				CDC6667D2AF0DB0D00739BF6 /* API */,
 				CDC666722AEFC70400739BF6 /* Model */,
 				CDC6666D2AEFC54E00739BF6 /* Mapper */,
 				CDC6666A2AEFC3E500739BF6 /* Views */,
@@ -162,6 +171,7 @@
 		CDC666652AEFA32D00739BF6 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				CDC666802AF0E99E00739BF6 /* PeopleViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -219,8 +229,18 @@
 		CDC666782AF04EA600739BF6 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				CDC666822AF0ECC200739BF6 /* DetailViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		CDC6667D2AF0DB0D00739BF6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CDC6667E2AF0DB1F00739BF6 /* NetworkingManager.swift */,
+				CDC666842AF1098B00739BF6 /* Endpoint.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,9 +323,13 @@
 				CDC666692AEFA4C200739BF6 /* PeopleItemView.swift in Sources */,
 				CDC6667A2AF04EE600739BF6 /* DetailView.swift in Sources */,
 				CDC666712AEFC6D300739BF6 /* UsersResponse.swift in Sources */,
+				CDC6667F2AF0DB2000739BF6 /* NetworkingManager.swift in Sources */,
 				CDC6665F2AEF986900739BF6 /* Symbols.swift in Sources */,
+				CDC666852AF1098B00739BF6 /* Endpoint.swift in Sources */,
 				CDC6664B2AEF955400739BF6 /* ContentView.swift in Sources */,
+				CDC666812AF0E99E00739BF6 /* PeopleViewModel.swift in Sources */,
 				CDC666492AEF955400739BF6 /* ReqResAPIApp.swift in Sources */,
+				CDC666832AF0ECC200739BF6 /* DetailViewModel.swift in Sources */,
 				CDC666742AEFC71400739BF6 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
