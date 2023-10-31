@@ -8,7 +8,7 @@
 import Foundation
 
 enum Endpoint {
-    case people
+    case people(page:Int)
     case detail(id:Int)
 }
 
@@ -38,7 +38,7 @@ extension Endpoint {
         }
     }
     
-    /*
+    
     var queryItems: [String:String]? {
         switch self {
         case .people(let page):
@@ -47,7 +47,7 @@ extension Endpoint {
             return nil
         }
     }
-    */
+    
 }
 
 extension Endpoint {
@@ -57,10 +57,9 @@ extension Endpoint {
         urlComponents.host = host
         urlComponents.path = path
         
-        
+        // Build our own array of url query item
         var requestQueryItems = [URLQueryItem]()
         
-        /*
         queryItems?.forEach { item in
             requestQueryItems.append(URLQueryItem(name: item.key, value: item.value))
         }
@@ -68,7 +67,7 @@ extension Endpoint {
         #if DEBUG
         requestQueryItems.append(URLQueryItem(name: "delay", value: "2"))
         #endif
-         */
+         
         
         urlComponents.queryItems = requestQueryItems
         return urlComponents.url
